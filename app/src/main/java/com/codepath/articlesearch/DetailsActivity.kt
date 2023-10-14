@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 
 private const val TAG = "DetailActivity"
 
-class DetailActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
     private lateinit var mediaImageView: ImageView
     private lateinit var titleTextView: TextView
     private lateinit var bylineTextView: TextView
@@ -26,11 +26,11 @@ class DetailActivity : AppCompatActivity() {
 
 
         // TODO: Get the extra from the Intent
-        val article = intent.getSerializableExtra(ARTICLE_EXTRA) as Article
+        val article = intent.getSerializableExtra(ARTICLE_EXTRA) as DisplayArticle
 
         // TODO: Set the title, byline, and abstract information from the article
-        titleTextView.text = article.headline?.main
-        bylineTextView.text = article.byline?.original
+        titleTextView.text = article.headline
+        bylineTextView.text = article.byline
         abstractTextView.text = article.abstract
 
         // TODO: Load the media image
