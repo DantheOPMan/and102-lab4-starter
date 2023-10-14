@@ -5,5 +5,9 @@ data class DisplayArticle(
     val abstract: String?,
     val byline: String?,
     val mediaImageUrl: String?
+<<<<<<< Updated upstream
 ) : java.io.Serializable
 
+=======
+) : java.io.Serializable
+>>>>>>> Stashed changes

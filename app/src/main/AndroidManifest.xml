@@ -15,7 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArticleSearch"
         tools:targetApi="31"
+<<<<<<< Updated upstream
         >
+=======
+        android:name=".ArticleApplication">
+>>>>>>> Stashed changes
         <!-- Detail Activity -->
         <activity android:name=".DetailsActivity"
             android:exported="true" />

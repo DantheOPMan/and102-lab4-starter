@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.articlesearch.databinding.ActivityMainBinding
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+<<<<<<< Updated upstream
 import kotlinx.coroutines.Dispatchers.IO
+=======
+>>>>>>> Stashed changes
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import okhttp3.Headers
@@ -23,6 +26,7 @@ fun createJson() = Json {
 }
 
 private const val TAG = "MainActivity/"
+<<<<<<< Updated upstream
 private const val SEARCH_API_KEY = "c30b6be13072568f3198912087cdda39"
 private const val ARTICLE_SEARCH_URL =
     "https://api.themoviedb.org/3/tv/top_rated?api_key=${SEARCH_API_KEY}"
@@ -30,6 +34,13 @@ private const val ARTICLE_SEARCH_URL =
 
 class MainActivity : AppCompatActivity() {
     private val articles = mutableListOf<DisplayArticle>()
+=======
+private  val SEARCH_API_KEY = BuildConfig.API_KEY
+private val ARTICLE_SEARCH_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${SEARCH_API_KEY}"
+
+class MainActivity : AppCompatActivity() {
+    private val articles = mutableListOf<DisplayArticle >()
+>>>>>>> Stashed changes
     private lateinit var articlesRecyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
 
@@ -82,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
                 Log.i(TAG, "Successfully fetched articles: $json")
                 try {
+<<<<<<< Updated upstream
 
                     val parsedJson = createJson().decodeFromString(
                         SearchTvResponse.serializer(),
@@ -100,6 +112,32 @@ class MainActivity : AppCompatActivity() {
                             })
                         }
                     }
+=======
+                    val parsedJson = createJson().decodeFromString(
+                        SearchNewsResponse.serializer(),
+                        json.jsonObject.toString()
+                    )
+                    parsedJson.response?.docs?.let { list ->
+                        lifecycleScope.launch {
+                            (application as ArticleApplication).db.articleDao().getAll().collect { databaseList ->
+                                databaseList.map { entity ->
+                                    DisplayArticle(
+                                        entity.headline,
+                                        entity.articleAbstract,
+                                        entity.byline,
+                                        entity.mediaImageUrl
+                                    )
+                                }.also { mappedList ->
+                                    articles.clear()
+                                    articles.addAll(mappedList)
+                                    articleAdapter.notifyDataSetChanged()
+                                }
+                            }
+                        }
+                    }
+
+
+>>>>>>> Stashed changes
 
                     // Reload the screen
                     articleAdapter.notifyDataSetChanged()

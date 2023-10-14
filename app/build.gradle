@@ -68,5 +68,9 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation 'androidx.fragment:fragment-ktx:1.5.0'
+<<<<<<< Updated upstream
 }
 
+=======
+}
+>>>>>>> Stashed changes
