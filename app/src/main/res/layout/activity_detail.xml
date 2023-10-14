@@ -24,6 +24,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:text="Title"
+        android:textSize="28dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -32,12 +33,13 @@
         app:layout_constraintTop_toBottomOf="@+id/mediaImage" />
 
     <TextView
-        android:id="@+id/mediaByline"
+        android:id="@+id/mediaDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:textSize="21dp"
         android:text="Byline"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#000000"
@@ -47,10 +49,11 @@
         app:layout_constraintTop_toBottomOf="@+id/mediaTitle" />
 
     <TextView
-        android:id="@+id/mediaAbstract"
+        android:id="@+id/mediaLanguage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:textSize="21dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:text="Abstract"
@@ -58,6 +61,22 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaByline" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaDate" />
+
+    <TextView
+        android:id="@+id/mediaOverview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18dp"
+        android:layout_marginEnd="10dp"
+        android:text="Abstract"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediaLanguage" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

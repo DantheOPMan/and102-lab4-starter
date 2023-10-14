@@ -11,19 +11,21 @@ private const val TAG = "DetailActivity"
 class DetailsActivity : AppCompatActivity() {
     private lateinit var mediaImageView: ImageView
     private lateinit var titleTextView: TextView
-    private lateinit var bylineTextView: TextView
-    private lateinit var abstractTextView: TextView
+    private lateinit var dateTextView: TextView
+    private lateinit var overviewTextView: TextView
+    private lateinit var languageTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // TODO: Find the views for the screen
         mediaImageView = findViewById(R.id.mediaImage)
         titleTextView = findViewById(R.id.mediaTitle)
-        bylineTextView = findViewById(R.id.mediaByline)
-        abstractTextView = findViewById(R.id.mediaAbstract)
+        dateTextView = findViewById(R.id.mediaDate)
+        overviewTextView = findViewById(R.id.mediaOverview)
+        languageTextView = findViewById(R.id.mediaLanguage)
 
+        val article = intent.getSerializableExtra(TVSHOW_EXTRA) as TVShow
 
         // TODO: Get the extra from the Intent
         val article = intent.getSerializableExtra(ARTICLE_EXTRA) as DisplayArticle
@@ -35,8 +37,7 @@ class DetailsActivity : AppCompatActivity() {
 
         // TODO: Load the media image
         Glide.with(this)
-            .load(article.mediaImageUrl)
+            .load("https://image.tmdb.org/t/p/w500" + article.backdrop_path)
             .into(mediaImageView)
-
     }
 }

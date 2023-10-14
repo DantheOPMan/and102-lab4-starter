@@ -23,8 +23,10 @@ fun createJson() = Json {
 }
 
 private const val TAG = "MainActivity/"
-private  val SEARCH_API_KEY = BuildConfig.API_KEY
-private val ARTICLE_SEARCH_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${SEARCH_API_KEY}"
+private const val SEARCH_API_KEY = "c30b6be13072568f3198912087cdda39"
+private const val ARTICLE_SEARCH_URL =
+    "https://api.themoviedb.org/3/tv/top_rated?api_key=${SEARCH_API_KEY}"
+
 
 class MainActivity : AppCompatActivity() {
     private val articles = mutableListOf<DisplayArticle>()
@@ -32,9 +34,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         val view = binding.root
         setContentView(view)
 
@@ -80,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 try {
 
                     val parsedJson = createJson().decodeFromString(
-                        SearchNewsResponse.serializer(),
+                        SearchTvResponse.serializer(),
                         json.jsonObject.toString()
                     )
                     parsedJson.response?.docs?.let { list ->
